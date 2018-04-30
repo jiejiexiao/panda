@@ -9,7 +9,7 @@
                      <router-link to="">首页</router-link>
                  </li>
                  <li>
-                     <router-link to="">分类</router-link>
+                     <router-link to="/species">分类</router-link>
                  </li>
                  <li>
                      <router-link to="">购物车</router-link>
