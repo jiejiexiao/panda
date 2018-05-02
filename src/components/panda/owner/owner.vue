@@ -1,16 +1,22 @@
 <template>
     <div id="panda_owner">
         <div class="owner_top">
+            <span class="iconfont icon-tuichu6 exit"></span>
             <div class="owner_top_cont">
                 <div class="owner_top_main">
-                    <div class="touxiang"></div>
-                    <div class="name"></div>
+                    <div class="touxiang">
+                        <input type="file" id="upload"/>
+                        <div class="avator">
+                            <img alt="" data-src="http://vue.wclimb.site/images//avator/8d348rp6z21524744505636.png" src="http://vue.wclimb.site/images//avator/8d348rp6z21524744505636.png" lazy="loaded">
+                        </div>
+                    </div>
+                    <div class="name">winnie兔<span class="iconfont icon-icon-2" @click="modify"></span></div>
                     <div class="cont">
                         <ul>
-                            <li><span  class="iconfont icon-wodedingdan"></span><span>我的订单</span></li>
-                            <li><span  class="iconfont icon-gouwucheman"></span><span>我的购物</span></li>
-                            <li><span  class="iconfont icon-icon3"></span><span>收藏商品</span></li>
-                            <li><span  class="iconfont icon-dizhi"></span><span>地址管理</span></li>
+                            <li><span  class="iconfont icon-wodedingdan active"></span><span><router-link to="/order/all">我的订单</router-link></span></li>
+                            <li><span  class="iconfont icon-gouwucheman active"></span><span><router-link to="/order">我的购物</router-link></span></li>
+                            <li><span  class="iconfont icon-icon3 active"></span><span><router-link to="/order">收藏商品</router-link></span></li>
+                            <li><span  class="iconfont icon-dizhi active"></span><span><router-link to="/order">地址管理</router-link></span></li>
                         </ul>
                     </div>
                 </div>
@@ -28,8 +34,23 @@
 </template>
 
 <script type="text/javascript">
-    // import '../../../font/iconfont.css'
-    export default{}
+    export default{
+        methods:{
+            modify(event){
+                if(event.target.classList.contains('icon-icon-2')){
+                    event.target.classList.remove('icon-icon-2');
+                    event.target.classList.add('icon-icon-2');
+                    let input=document.createElement('input');
+                    let txt=event.target.previousSibling.nodeValue;
+                    input.value=txt;
+                    input.type="text";
+                    event.target.previousSibling.nodeValue='';
+                    event.target.parentNode.insertBefore(input,event.target);
+                }
+                
+            }
+        }
+    }
 </script>
 <style lang="scss" >
 @import 'owner.scss';
