@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
 import pandaComponent from '../components/panda/panda.vue'
+
 import loginComponent from '../components/login/login.vue'
 import registerComponent from '../components/register/register.vue'
 import ownerComponent from '../components/panda/owner/owner.vue'
@@ -21,6 +22,12 @@ import speciesTab3 from '../components/panda/species/tab/tab3.vue'
 import speciesTab4 from '../components/panda/species/tab/tab4.vue'
 
 
+import homeComponent from '../components/panda/home/home.vue'
+import recommendComponent from '../components/panda/home/recommend/recommend.vue'
+import womenComponent from '../components/panda/home/women/women.vue'
+import BeautySkinCareComponent from '../components/panda/home/BeautySkinCare/BeautySkinCare.vue'
+import menComponent from '../components/panda/home/men/men.vue'
+
 const router = new VueRouter({
     routes: [
         {path:'/login', component: loginComponent, name: 'login' },
@@ -33,18 +40,23 @@ const router = new VueRouter({
             {path:'/toSend', component: toSendComponent, name: 'toSend'},
             {path:'/toReceive', component: toReceiveComponent, name: 'toReceive'}
         ]},
-        //主组件
-         {path:'/', component: pandaComponent, name: 'panda',children:[
+        {path:'/', component: pandaComponent, name: 'panda',children:[
             {path:'owner', component: ownerComponent, name: 'owner'},
+            {path:'/', component: homeComponent, name: 'home', children:[
+                {path:'/', component: recommendComponent, name: 'recommend'},
+                {path:'women', component: womenComponent, name: 'women'},
+                {path:'BeautySkinCare', component: BeautySkinCareComponent, name: 'BeautySkinCare'},
+                {path:'men', component: menComponent, name: 'men'},
+            ]},
             {path:'species',component:speciesComponent,name:'species',children:[
-            	{path:'tab1',component:speciesTab1,name:'speciesTab1'},
-            	{path:'tab2',component:speciesTab2,name:'speciesTab2'},
-            	{path:'tab3',component:speciesTab3,name:'speciesTab3'},
-            	{path:'tab4',component:speciesTab4,name:'speciesTab4'},
+                {path:'tab1',component:speciesTab1,name:'speciesTab1'},
+                {path:'tab2',component:speciesTab2,name:'speciesTab2'},
+                {path:'tab3',component:speciesTab3,name:'speciesTab3'},
+                {path:'tab4',component:speciesTab4,name:'speciesTab4'},
             ]}
-        ] }
+         ]}
+      ]
 
-    ]
 })
 
 export default router;
