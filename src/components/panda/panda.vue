@@ -6,7 +6,7 @@
         <footer id="footer">
             <ul>
                  <li>
-                     <router-link to="">首页</router-link>
+                     <router-link to="/">首页</router-link>
                  </li>
                  <li>
                      <router-link to="">分类</router-link>
@@ -24,5 +24,7 @@
 
 <script type="text/javascript">
     import '../../style/panda.scss';
+
+    export default {};
 </script>
 
